@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+
+{%block content%}
+    <form action="/run/" method="post">
+    {% csrf_token %}
+        <div class="large-offset-3 large-6 columns">
+                {{MessForm}}
+        <center>
+            <input class="button" type="submit" value="Запустити">
+            </center>
+          </div>
+    </form>
+{%endblock%}

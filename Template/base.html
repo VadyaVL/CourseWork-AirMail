@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AirMail</title>
+
+    <link rel="stylesheet" type="text/css" href="{%static "css/foundation.css"%}">
+</head>
+<body>
+
+
+<nav class="top-bar foundation-bar" data-topbar>
+  <section class="top-bar-section">
+      <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">AirMail</a></h1>
+    </li>
+    <li class="name">
+      <h1><a href="/about/">Про AirMail</a></h1>
+  </li>
+      </ul>
+    <!-- Right Nav Section -->
+    <ul class="right">
+        {% if user.username %}
+            <li><a href="/view/">Корзина</a></li>
+            <li><a href="/auth/logout/"> Вийти {{user.username}} </a></li>
+        {% else %}
+            <li><a href="/auth/login/"> Зайти </a></li>
+        {% endif %}
+    </ul>
+  </section>
+</nav>
+
+
+<div class="row">
+    {%block content%}
+
+    {%endblock%}
+    {%block login%} {%endblock%}
+</div>
+
+<div class="row">
+     <footer>
+         <div class="twelve columns">
+         <p></p>
+         </div>
+     </footer>
+</div>
+
+</body>
+</html>
