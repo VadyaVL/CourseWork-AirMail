@@ -1,7 +1,8 @@
 {% extends 'base.html'%}
 
 {%block login%}
-    <div class="large-offset-3 large-6 columns">
+<div class="row">
+  <div class="small-centered large-8 columns">
         <form action="/auth/login/" method="post">
          {%csrf_token%}
 
@@ -14,8 +15,11 @@
             {%if login_error%}
                 <label class="error">{{login_error}}</label>
             {%endif%}
-            <input style="float: left;" class="button" type="submit" value="Зайти">
-            <a href="/auth/register/"><input style="float: right;" class="button" value="Зареєструватися"></a>
+                                        <input style="float: left;" class="button" type="submit" value="Зайти">
+            <a href="/auth/register/">  <input style="float: right;" class="button" value="Зареєструватися"></a>
         </form>
-    </div>
+  </div>
+</div>
+
+
 {%endblock%}

@@ -32,13 +32,17 @@
   </section>
 </nav>
 
-
 <div class="row">
-    {%block content%}
-
-    {%endblock%}
-    {%block login%} {%endblock%}
+  <div class="small-6 large-2 columns">LEFT</div>
+  <div class="small-6 large-8 columns">
+        {%block content%} {%endblock%}
+        {%block login%} {%endblock%}
+        {%block info%} {%endblock%}
+  </div>
+  <div class="small-12 large-2 columns">RIGHT</div>
 </div>
+
+
 
 <div class="row">
      <footer>

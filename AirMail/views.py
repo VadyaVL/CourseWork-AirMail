@@ -41,8 +41,19 @@ def home(request):
                 NewMessage = NewMessage[i]
                 NewMessage.Receiver_id = args['user'];
                 NewMessage.save()
+                ##################################
+                args = {}
+                args['dialog'] = NewMessage
+                args['MessForm'] = forms.MessageForms()
+                args['user'] = auth.get_user(request)
 
-            return redirect('/')
+                messages = Message.objects.filter(Q(Dialogue_id=args['dialog']))
+                current_page = Paginator(messages, 10)
+                args['messages'] = current_page.page(current_page.num_pages)
+
+                return render(request, 'viewDialog.html', args)
+            else:
+                return redirect('/')
         else:
             args['MessForm'] = mess_form
 
@@ -59,7 +70,7 @@ def view(request):
 
     return render(request, 'view.html', args)
 
-def getDialogue(request, dialogue_id, page_number=1):
+def getDialogue(request, dialogue_id, page_number=0):
 
     args = {}
     args['dialog'] = Dialogue.objects.get(id=dialogue_id)
@@ -91,7 +102,8 @@ def getDialogue(request, dialogue_id, page_number=1):
     messages = Message.objects.filter(Q(Dialogue_id=args['dialog']))
     current_page = Paginator(messages, 10)
 
-    page_number = current_page.num_pages
+    if page_number == 0:
+        page_number = current_page.num_pages
 
     args['messages'] = current_page.page(page_number)
 
