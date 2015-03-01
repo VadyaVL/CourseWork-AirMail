@@ -3,6 +3,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters.html import HtmlFormatter
+from pygments import highlight
+
+
 class Dialogue(models.Model):
     Established = models.DateTimeField(db_column='Established', null=False)
     CountMess = models.IntegerField(db_column='CountMess', default=0, null=False)
@@ -41,6 +46,7 @@ class Dialogue(models.Model):
             return tmp[lenght-2]
         else:
             return
+
 
 class Message(models.Model):
 

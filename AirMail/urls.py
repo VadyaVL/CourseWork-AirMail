@@ -4,11 +4,7 @@ import views
 
 from rest_framework.urlpatterns import format_suffix_patterns
 import api
-
-#from rest_framework import routers
-
-#router = routers.DefaultRouter()
-#router.register(r'users', views.UserViewSet)
+from django.conf.urls import include
 
 
 urlpatterns = patterns('',
@@ -22,12 +18,21 @@ urlpatterns = patterns('',
     url(r'^about/', views.about),
     url(r'^auth/', include('loginsys.urls')),
 
-    #url(r'^', include(router.urls)),
-    #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
-    url(r'^api/dialogues/$', api.DialogueList.as_view()),
-    url(r'^api/dialogues/(?P<pk>\d+)/$', api.DialogueDetail.as_view()),
+    url(r'^users/$', api.UserList.as_view()),
+    url(r'^users/(?P<pk>\d+)/$', api.UserDetail.as_view()),
+    url(r'^info/$', api.InformationList.as_view()),
+    url(r'^info/(?P<pk>\d+)/$', api.InformationDetail.as_view()),
+    url(r'^dialogues/$', api.DialogueList.as_view()),
+    url(r'^dialogues/(?P<pk>\d+)/$', api.DialogueDetail.as_view()),
+
     #url(r'^', views.home),
 )
 
+urlpatterns += [
+    url(r'^api-auth/', include('rest_framework.urls',
+                               namespace='rest_framework')),
+]
+
 urlpatterns = format_suffix_patterns(urlpatterns)
+

@@ -20,10 +20,8 @@ def home(request):
         args['MessForm'] = forms.MessageForms()
 
         if request.method == 'POST' and args['user'] is not None:
-            #print 'Post and User'
             mess_form = forms.MessageForms(request.POST)
             if mess_form.is_valid():
-                #print 'Form is valid'
                 dialogue = Dialogue(CountMess=1, ForReceiver=True)
                 dialogue.Established = datetime.now()
                 dialogue.Creator_id = args['user']
