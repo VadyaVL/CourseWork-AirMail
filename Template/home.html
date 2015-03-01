@@ -1,7 +1,9 @@
 {% extends 'base.html'%}
 
 {%block content%}
-<div class="row">
+{%if mess%}
+    {{mess}}
+    {%else%}
         <div class="row">
             <div class="large-12 columns">
                 <div class="callout panel">
@@ -15,5 +17,5 @@
                 </div>
             </div>
         </div>
-</div>
+{%endif%}
 {%endblock%}

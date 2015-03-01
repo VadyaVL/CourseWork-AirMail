@@ -1,24 +1,25 @@
 {% extends 'base.html'%}
 
 {%block login%}
-<div class="row">
-  <div class="small-centered large-8 columns">
-        <form action="/auth/login/" method="post">
-         {%csrf_token%}
+<div class="callout panel small-centered large-8 columns">
+            <form action="/auth/login/" method="post">
+             {%csrf_token%}
 
-            <label for="username">Логін</label>
-            <input type="text" name="username" id="username">
+                <label for="username">Логін</label>
+                <input type="text" name="username" id="username">
 
-            <label for="password">Пароль</label>
-            <input type="password" name="password" id="password">
+                <label for="password">Пароль</label>
+                <input type="password" name="password" id="password">
 
-            {%if login_error%}
-                <label class="error">{{login_error}}</label>
-            {%endif%}
-                                        <input style="float: left;" class="button" type="submit" value="Зайти">
-            <a href="/auth/register/">  <input style="float: right;" class="button" value="Зареєструватися"></a>
-        </form>
-  </div>
+                {%if login_error%}
+                    <label class="error">{{login_error}}</label>
+                {%endif%}
+
+                <ul class="button-group">
+                                            <input class="button left"  type="submit" value="Зайти">
+                <a href="/auth/register/">  <input class="button right" value="Зареєструватися"></a>
+                </ul>
+            </form>
 </div>
 
 

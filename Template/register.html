@@ -1,12 +1,14 @@
 {% extends 'base.html'%}
 
 {%block login%}
-    <div class="large-offset-3 large-6 columns">
+
+<div class="callout panel small-centered large-8 columns">
         <form action="/auth/register/" method="post">
          {%csrf_token%}
-        {{form}}
-
-            <input style="float: left;" class="button" type="submit" value="Зареєструватися">
+            {{form}}
+            <ul class="button-group">
+            <input class="button right" type="submit" value="Зареєструватися">
+                </ul>
             </form>
     </div>
 {%endblock%}

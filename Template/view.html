@@ -2,27 +2,46 @@
 
 {%block content%}
 <div class="large-9 medium-8 columns">
-    {%if list%}
-    {%for i in list%}
-        <p>
-        {% if user.id != i.Mess1.User_id.id%}
-            <font style="float: left;" color="red">{{i.Mess1}}</font>
-        {%else%}
-            <font style="float: left;" color="green">{{i.Mess1}}</font>
-        {%endif%}
-        </p>
-    <br>
-        <p>
-        {% if user.id != i.Mess2.User_id.id%}
-            <font style="float: left;" color="red">{{i.Mess2}}</font>
-        {%else%}
-            <font style="float: left;" color="green">{{i.Mess2}}</font>
-        {%endif%}
-        </p>
-        <a href="/view/{{i.id}}/" class="button radius">Перейти до діалогу</a>
 
-        <hr>
+    {%if mess%}
+    {{mess}}
+    {%endif%}
+
+    {%if list%}
+    <div class="row">
+    {%for i in list%}
+        <div class="large-12 columns">
+            <div class="callout panel">
+                <div class="row">
+                    <div class="columns">
+                        <div class="row">
+                            <p>
+                            {% if user.id != i.Mess1.User_id.id%}
+                                <font style="float: left;" color="red">{{i.Mess1}}</font>
+                            {%else%}
+                                <font style="float: left;" color="green">{{i.Mess1}}</font>
+                            {%endif%}
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p>
+                            {% if user.id != i.Mess2.User_id.id%}
+                                <font style="float: left;" color="red">{{i.Mess2}}</font>
+                            {%else%}
+                                <font style="float: left;" color="green">{{i.Mess2}}</font>
+                            {%endif%}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <a href="/view/{{i.id}}/" class="button radius">Перейти до діалогу</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     {%endfor%}
+    </div>
     {%else%}
     <H>Непрочитані діалоги відсутні</H>
     {%endif%}
