@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q, F
 from models import *
 
-import forms, random
+import forms,random
 
 notLogin = "Для перегляду даної сторінки потрібно увійти до системи"
 notLoginAtHomePage = "Для того, щоб відправляти повідомлення вам необхідно здійснити вхід."

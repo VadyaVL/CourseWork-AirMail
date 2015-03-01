@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'AirMail',
     'loginsys',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -94,3 +95,9 @@ TEMPLATE_DIRS = (
 STATICFILES_DIRS = (
     '../AirMail/static/',
 )
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGINATE_BY': 10
+}
