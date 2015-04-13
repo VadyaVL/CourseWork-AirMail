@@ -1,10 +1,10 @@
 {% extends 'base.html'%}
 
 {%block content%}
-<div class="large-9 medium-8 columns">
+<div class="callout panel">
+        {%if mess%}
+        {{mess}}
+        {%endif%}
+    </div>
 
-    {%if mess%}
-    {{mess}}
-    {%endif%}
-</div>
 {%endblock%}

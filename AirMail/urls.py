@@ -1,11 +1,16 @@
+# -*- coding: utf-8 -*-
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 import views
 
 from rest_framework.urlpatterns import format_suffix_patterns
-import api
 from django.conf.urls import include
+from tastypie.api import Api
+from api import ProfileResource, UserResource
 
+v1_api = Api(api_name='v1')
+v1_api.register(ProfileResource())
+v1_api.register(UserResource())
 
 urlpatterns = patterns('',
 
@@ -17,16 +22,9 @@ urlpatterns = patterns('',
     url(r'^view/', views.view),
     url(r'^about/', views.about),
     url(r'^auth/', include('loginsys.urls')),
+    url(r'^api/', include(v1_api.urls)),
 
-
-    url(r'^users/$', api.UserList.as_view()),
-    url(r'^users/(?P<pk>\d+)/$', api.UserDetail.as_view()),
-    url(r'^info/$', api.InformationList.as_view()),
-    url(r'^info/(?P<pk>\d+)/$', api.InformationDetail.as_view()),
-    url(r'^dialogues/$', api.DialogueList.as_view()),
-    url(r'^dialogues/(?P<pk>\d+)/$', api.DialogueDetail.as_view()),
-
-    #url(r'^', views.home),
+    url(r'^', views.home),
 )
 
 urlpatterns += [
@@ -35,4 +33,3 @@ urlpatterns += [
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
-

@@ -2,17 +2,24 @@
 {%load staticfiles%}
 <html>
 <head lang="en">
+
     <meta charset="UTF-8">
     <title>AirMail</title>
 
     <link rel="stylesheet" type="text/css" href="{%static "css/foundation.css"%}">
 
+
+    <script src="{%static "js/jquery.js"%}"></script>
+    <script src="{%static "js/underscore.js"%}"></script>
+    <script src="{%static "js/backbone.js"%}"></script>
+    <script src="{%static "js/backbone_tastypie.js"%}"></script>
+    <script src="{%static "js/flotr2.js"%}"></script>
+    <script src="{%static "js/myFunc.js"%}"></script>
+
 </head>
 
 
 <body>
-
-
 <nav class="top-bar foundation-bar" data-topbar>
   <section class="top-bar-section">
       <ul class="title-area">
@@ -27,7 +34,9 @@
     <ul class="right">
         {% if user.username %}
             <li><a href="/view/">Корзина</a></li>
-            <li><a href="/auth/logout/"> Вийти {{user.username}} </a></li>
+
+            <li><a href="/auth/view/"> {{user.username}} </a></li>
+            <li><a href="/auth/logout/"> Вийти </a></li>
         {% else %}
             <li><a href="/auth/login/"> Зайти </a></li>
         {% endif %}
@@ -36,24 +45,79 @@
 </nav>
 
 
+<!-->
+<div class="three-columns" >
+  <div class="row">
 
-<div class="row">
-  <div class="small-6 large-2 columns"><p></p></div>
-  <div class="small-6 large-8 columns">
+        <div class="large-9 columns" role="content">
+            <header  >
+            <div class="row">
+                <div class="large-12 columns">
+
+                </div>
+            </div>
+        </header>
         {%block content%} {%endblock%}
         {%block login%} {%endblock%}
         {%block info%} {%endblock%}
-  </div>
-  <div class="small-12 large-2 columns"><p></p></div>
-</div>
+        </div>
 
-<div class="row">
-     <footer>
-         <div class="twelve columns">
-         <p></p>
-         </div>
-     </footer>
-</div>
+      <aside class="large-3 columns">
+                {%if profile%}
+                <table style="float:right;">
+                    <tr>
+                        <h6><th>Карма: </th><th><b>{{profile.karma}}</b></th></h6>
+                        </tr>
+                    <tr>
+                        <h6><th>Надіслано листівок:</th> <th><b>{{profile.countDialog}}</b></th></h6>
+                    </tr>
+                    <tr>
+                        <h6><th>Надіслано повідомлень: <th><b>{{profile.countMess}}</b></th></h6>
+                    </tr>
+                </table>
+                {%endif%}
+
+                {%if info%}
+                <table style="float:right;">
+                    <tr>
+                        <th><b>Відправлено листів: </b></th><th>{{info.CountDialog}}</th>
+                    </tr>
+                    <tr>
+                        <th><b>Всього користувачів: </b></th><th>{{info.CountUser}}</th>
+                    </tr>
+                </table>
+                {%endif%}
+
+                {%if profile%}
+                        <div id="container" style="width:250px; height:250px; float:right;"> </div>
+                            <script>
+                                basic_pie(document.getElementById("container"),{{profile.countDialog}}, {{profile.countMess}});
+                            </script>
+                    {%endif%}
+        </aside>
+
+
+  </div>
+
+      <footer  class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Copyright no one at all.</p>
+            </div>
+            <div class="large-6 columns">
+              <ul class="inline-list right">
+                <li><a href="https://play.google.com/">Android App</a></li>
+                  <li class="fi-social-facebook"><a href="http://vk.com/airmailapp">VK</a></li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
 
 </body>
 </html>

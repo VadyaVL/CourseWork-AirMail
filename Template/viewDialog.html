@@ -3,9 +3,13 @@
 {%block content%}
     {%for mess in messages%}
         {% if user.id != mess.User_id.id%}
-            <font style="float: left;" color="red">{{mess}}</font>
+    <button class="round right" disabled="disabled ">
+            <font >{{mess}}</font>
+    </button>
         {%else%}
-            <font style="float: right;" color="green">{{mess}}</font>
+    <button class="round left" disabled="disabled ">
+            <font >{{mess}}</font>
+    </button>
         {%endif%}
         <hr>
     {%endfor%}

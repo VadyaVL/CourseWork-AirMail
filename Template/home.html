@@ -1,14 +1,23 @@
 {% extends 'base.html'%}
 
 {%block content%}
-{%if mess%}
-    {{mess}}
-    {%else%}
+
+
+
+                    {%if mess%}
+<div class="callout panel">
+
+                        {{mess}}
+
+                </div>
+                    {%else%}
+
         <div class="row">
             <div class="large-12 columns">
-                <div class="callout panel">
+                <div class="callout panel" style="width:75%">
+
                     <form action="/run/" method="post">
-                    {% csrf_token %}
+                                {% csrf_token %}
                                 {{MessForm}}
                         <center>
                             <input class="button" type="submit" value="Запустити">

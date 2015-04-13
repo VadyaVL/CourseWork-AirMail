@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{%block info%}
+
+
+<article>
+
+        <table>
+        <tr>
+            <h6><th>Логін: </th><th><b>{{user.username}}</b></th></h6>
+            </tr>
+        <tr>
+            <h6><th>Email:</th> <th><b>{{user.email}}</b></th></h6>
+        </tr>
+        <tr>
+            <h6><th>Зареєстрвоаний: <th><b>{{user.date_joined}}.</b></th></h6>
+        </tr>
+        <tr>
+            <h6><th>Останній вхід: <th><b>{{user.last_login}}.</b></th></h6>
+        </tr>
+        </table>
+
+</article>
+<!--
+{%if form%}
+<div class="callout panel">
+        <form action="/auth/edit/" method="post">
+         {%csrf_token%}
+            {{form}}
+            <ul class="button-group">
+            <input class="button right" type="submit" value="Зберегти зміни">
+                </ul>
+            </form>
+    </div>
+{%endif%}-->
+{%endblock%}

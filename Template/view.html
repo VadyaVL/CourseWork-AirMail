@@ -1,37 +1,37 @@
 {% extends 'base.html'%}
 
 {%block content%}
-<div class="large-9 medium-8 columns">
 
     {%if mess%}
+            <div class="panel callout radius">
     {{mess}}
+                </div>
     {%endif%}
 
     {%if list%}
     <div class="row">
     {%for i in list%}
         <div class="large-12 columns">
-            <div class="callout panel">
+            <div class="panel callout radius" style="width: 75%" align="center">
                 <div class="row">
                     <div class="columns">
                         <div class="row">
-                            <p>
+                                <button class="round left" disabled="disabled ">
                             {% if user.id != i.Mess1.User_id.id%}
-                                <font style="float: left;" color="red">{{i.Mess1}}</font>
+                                {{i.Mess1}}
                             {%else%}
-                                <font style="float: left;" color="green">{{i.Mess1}}</font>
-                            {%endif%}
-                            </p>
+                                {{i.Mess1}}
+                            {%endif%}</button>
                         </div>
                         <div class="row">
-                            <p>
+                                <button class="round right" disabled="disabled">
                             {% if user.id != i.Mess2.User_id.id%}
-                                <font style="float: left;" color="red">{{i.Mess2}}</font>
+                                {{i.Mess2}}
                             {%else%}
-                                <font style="float: left;" color="green">{{i.Mess2}}</font>
-                            {%endif%}
-                            </p>
+                                {{i.Mess2}}
+                            {%endif%}</button>
                         </div>
+
                     </div>
 
                     <div class="columns">
@@ -45,5 +45,4 @@
     {%else%}
     <H>Непрочитані діалоги відсутні</H>
     {%endif%}
-    </div>
 {%endblock%}

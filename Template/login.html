@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 
 {%block login%}
-<div class="callout panel small-centered large-8 columns">
+<div class="callout panel" style="width:75%">
             <form action="/auth/login/" method="post">
              {%csrf_token%}
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for AirMail project.
 
@@ -10,8 +11,12 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
+reload(sys)
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+sys.setdefaultencoding("utf8")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -38,7 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'AirMail',
     'loginsys',
-    'rest_framework',
+    'tastypie',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -95,9 +100,3 @@ TEMPLATE_DIRS = (
 STATICFILES_DIRS = (
     '../AirMail/static/',
 )
-
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
-    'PAGINATE_BY': 10
-}

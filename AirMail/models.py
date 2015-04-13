@@ -3,11 +3,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from pygments.lexers import get_lexer_by_name
-from pygments.formatters.html import HtmlFormatter
-from pygments import highlight
-
-
 class Dialogue(models.Model):
     Established = models.DateTimeField(db_column='Established', null=False)
     CountMess = models.IntegerField(db_column='CountMess', default=0, null=False)
@@ -25,9 +20,9 @@ class Dialogue(models.Model):
         tmp = Message.objects.filter(Dialogue_id=self)
         lenght = len(tmp)
         if lenght>=2:
-            str = tmp[lenght-2].__str__() + "\n" + tmp[lenght-1].__str__()
+            str = (tmp[lenght-2].__str__() + "\n" + tmp[lenght-1].__str__()).encode('cp1251')
         else:
-            str = tmp[lenght-1].__str__()
+            str = tmp[lenght-1].__str__().encode('cp1251')
 
         return str
 
@@ -37,7 +32,7 @@ class Dialogue(models.Model):
         if lenght>=1:
             return tmp[lenght-1]
         else:
-            return
+            return ""
 
     def Mess1(self):
         tmp = Message.objects.filter(Dialogue_id=self)
@@ -45,7 +40,7 @@ class Dialogue(models.Model):
         if lenght>=2:
             return tmp[lenght-2]
         else:
-            return
+            return ""
 
 
 class Message(models.Model):
@@ -64,6 +59,7 @@ class Message(models.Model):
 class Information(models.Model):
 
     CountDialog = models.IntegerField(db_column='CountDialog', null=False, default=0, verbose_name='Кількість запущених')
+    CountUser = models.IntegerField(db_column='CountUser', null=False, default=0, verbose_name='Кількість користувачів')
 
     class Meta:
         db_table = 'Information'

@@ -21,6 +21,7 @@ class UserRegForm(forms.ModelForm):
         error_messages={
             'invalid': _("Допустимі лише літери, цифри та "
                          "@/./+/-/_.")})
+
     password1 = forms.CharField(label=_("Пароль"),
         widget=forms.PasswordInput)
     password2 = forms.CharField(label=_("Повторіть пароль"),
