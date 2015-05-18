@@ -13,8 +13,8 @@ class UserResource(ModelResource):
         resource_name = 'user'
         allowed_methods = ['get', 'post', 'delete', 'put', 'patch']
         include_resource_uri = False
-        authentication = BasicAuthentication()
-        authorization = DjangoAuthorization()
+        authentication = Authentication()
+        authorization = Authorization()
         excludes = ['email', 'password', 'is_superuser']
         always_return_data = True
         fields = ['username']
@@ -48,8 +48,8 @@ class ProfileResource(ModelResource):
         resource_name = 'profile'
         allowed_methods = ['get', 'post', 'delete', 'put', 'patch']
         include_resource_uri = False
-        authentication = BasicAuthentication()
-        authorization = DjangoAuthorization()
+        authentication = Authentication()
+        authorization = Authorization()
         always_return_data = True
         #fields = ['id', 'Messages', 'Established', 'CountMess']
 

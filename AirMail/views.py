@@ -172,7 +172,6 @@ def getInformation():
     return info
 
 def getProfile(user):
-    print user
     profile = None
 
     if type(user) != AnonymousUser:
